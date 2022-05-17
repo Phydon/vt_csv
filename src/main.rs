@@ -19,15 +19,21 @@ fn equation(num: f64) -> f64 {
 }
 
 fn input() -> f64 {
-    println!("Please enter a number: ");
+    loop {
+        println!("Please enter a number: ");
 
-    let mut inp = String::new();
-    io::stdin().read_line(&mut inp).expect("Failed to read input");
-    let numeric = inp.trim().parse::<f64>();
+        let mut inp = String::new();
+        io::stdin().read_line(&mut inp).expect("Failed to read input");
 
-    match numeric {
-        Ok(_ok) => numeric.unwrap(),
-        Err(_e) => 1 as f64,
+        match inp.trim().parse::<i64>() {
+            Ok(_ok) => return inp.trim().parse::<i64>().unwrap() as f64,
+            Err(_e) => {
+                match inp.trim().parse::<f64>() {
+                    Ok(_ok) => return inp.trim().parse::<f64>().unwrap(),
+                    Err(_e) => println!("Not a number. Try again."),
+                }
+            }
+        }
     }
 }
 
