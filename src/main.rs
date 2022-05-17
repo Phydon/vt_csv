@@ -26,11 +26,11 @@ fn input() -> f64 {
         io::stdin().read_line(&mut inp).expect("Failed to read input");
 
         match inp.trim().parse::<i64>() {
-            Ok(_ok) => return inp.trim().parse::<i64>().unwrap() as f64,
-            Err(_e) => {
+            Ok(_) => return inp.trim().parse::<i64>().unwrap() as f64,
+            Err(_) => {
                 match inp.trim().parse::<f64>() {
-                    Ok(_ok) => return inp.trim().parse::<f64>().unwrap(),
-                    Err(_e) => println!("Not a number. Try again."),
+                    Ok(_) => return inp.trim().parse::<f64>().unwrap(),
+                    Err(_) => println!("Not a number. Try again."),
                 }
             }
         }
